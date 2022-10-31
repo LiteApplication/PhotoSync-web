@@ -1,5 +1,8 @@
 :root {
     /* Accent color */
     --primary: rgb(18, 172, 164);
-    --background: rgb(71, 71, 71);
+    --background: rgb(243, 243, 243);
+    --text: rgb(0, 0, 0);
+    --primary-text: rgb(4, 114, 108);
+    --inactive: rgb(128, 128, 128);
 }

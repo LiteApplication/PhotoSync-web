@@ -1,1 +1,42 @@
-/* Remove body margins */
+body {
+    background-color: var(--background);
+    font-family: "Product Sans", sans-serif;
+    margin: 0;
+    display: grid;
+}
+
+body *:hover {
+    /* DEBUG: */
+    /* border: 1px solid red; */
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    /* Add a box shadow to the header */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+}
+
+header .title-group {
+    padding: 1rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header img {
+    height: 2rem;
+    margin-right: 1rem;
+    /* Add a shadow to the logo */
+    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5));
+}

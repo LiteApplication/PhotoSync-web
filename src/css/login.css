@@ -1,0 +1,116 @@
+body {
+    /* Center the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    /* Add a moving gradient to the body (rainbow)*/
+    background: linear-gradient(33deg, #ff00005f, #ff7f005f, #ffff005f, #00ff005f, #0000ff5f, #4b00825f, #8b00ff5f);
+    background-size: 600% 600%;
+    animation: gradient 10s ease infinite;
+
+
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-box {
+    background-color: var(--background);
+    padding: 3rem;
+    border-radius: 1rem;
+    /* Add a box shadow to the login box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: var(--text);
+}
+
+.login-box>h1 {
+    margin: 0;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--primary-text);
+}
+
+.login-box>.textbox {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box>.textbox>input {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 2px solid var(--inactive);
+    background-color: transparent;
+    transition: border-bottom 0.5s ease, color 0.5s ease;
+    color: var(--text);
+    font-size: 1.5rem;
+    outline: none;
+}
+
+.login-box>.textbox>input:focus {
+    border-bottom: 2px solid var(--primary);
+
+}
+
+.login-box>.textbox>span {
+    /* Material Icons */
+    font-size: 1.5rem;
+    color: var(--inactive);
+    margin: 0 0.5rem;
+    margin-top: 0.5rem;
+    transition: color 0.5s ease;
+
+}
+
+.login-box>.textbox:hover>span {
+    color: var(--primary-text);
+}
+
+.login-box>.textbox:hover>input {
+    color: var(--primary-text);
+}
+
+.buttons {
+    /*Make the 2 buttons the same size*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+
+}
+
+.buttons>.button {
+    padding: 0.5rem 1rem;
+    border: 3px solid var(--primary);
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    color: white;
+    font-size: 1.5rem;
+    transition: background-color 0.5s, color0.5s, border-color 0.5s ease;
+    flex-grow: 1;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.buttons>.button:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--primary-text);
+}
