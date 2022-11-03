@@ -1,4 +1,4 @@
-var host = "http://0.0.0.0:8080";
+var host = "http://127.0.0.1:8080";
 
 // Check if host and the page share the same origin
 {
@@ -6,11 +6,12 @@ var host = "http://0.0.0.0:8080";
     if (url.origin == window.location.origin) {
         host = "";
     }
+    console.log("Using host : " + host);
 }
 
 // Send a request to the server with a path, method, and body
 // The method and body are optional
-function request(path, method, body, cache = false) {
+function request(path, method, body, cache = false, priority = "low") {
     // Get the token from local storage
     const token = localStorage.getItem("Token");
     var request;
@@ -35,7 +36,7 @@ function request(path, method, body, cache = false) {
     }
 
     // Send the request
-    return fetch(request, { cache: cache ? "force-cache" : "default" });
+    return fetch(request, { cache: cache ? "force-cache" : "default", priority: priority });
 }
 
 // Save the token to local storage
