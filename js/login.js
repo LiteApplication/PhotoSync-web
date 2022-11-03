@@ -1,6 +1,6 @@
 var register = false;
 
-function login() {
+function do_login() {
     // Get username and password from the form
 
     var username = $("#username").val();
@@ -33,13 +33,60 @@ function login() {
         // If there was an error, the login failed
         console.log("Login failed", error);
     });
-
 }
+
+function do_register() {
+    // Get username and password from the form
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    // Get the full name from the form
+    var fullname = $("#fullname").val();
+
+    request("/accounts/create", "PUT", {
+        "username": username,
+        "password": password,
+        "fullname": fullname
+    }).then((data) => {
+        if (data.status === 204) {
+            // Account already exists
+            $("#error").text("Account already exists");
+            $("#error").css("display", "block");
+            return;
+        }
+
+        data.json().then((value) => {
+            // Check if the response is OK
+            if (data.status !== 201) {
+                // If not, the registration failed
+                $("#error").text(value.message);
+                $("#error").show();
+                console.log("Registration failed: " + value.message);
+                return;
+            }
+            // Login
+            do_login();
+        });
+    }).catch((error) => {
+        // Make the error message visible
+        $("#error").text("Registration failed");
+        $("#error").css("display", "block");
+        // If there was an error, the registration failed
+        console.log("Registration failed", error);
+    });
+}
+
+
 
 $(document).ready(function () {
     $("#login").click(function (event) {
         event.preventDefault();
-        login();
+        if (register) {
+            do_register();
+        }
+        else {
+            do_login();
+        }
     });
     $("#register").click(function (event) {
         event.preventDefault();
