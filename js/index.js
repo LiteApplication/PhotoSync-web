@@ -92,18 +92,24 @@ function get_month_node(timestamp) {
 
     /*
     <div class="year">
-        <h2>2019</h2>
-        <!-- make it retractable -->
-        <span class="material-symbols-outlined">
-            expand_more
-        </span>
-        <div class="month">
-            <h3>January</h3>
+        <div class="year-title">
+            <h2>2019</h2>
             <!-- make it retractable -->
             <span class="material-symbols-outlined">
                 expand_more
             </span>
-            <!-- Images -->
+        </div>
+        <div class="month">
+            <div class="month-title">
+                <h3>January</h3>
+                <!-- make it retractable -->
+                <span class="material-symbols-outlined">
+                    expand_more
+                </span>
+            </div>
+            <div class="images">
+                <!-- Images -->
+            </div>
         </div>
     </div>
     */
@@ -115,13 +121,16 @@ function get_month_node(timestamp) {
         // If not, create the node
         var year_node = document.createElement("div");
         year_node.className = "year";
+        var year_title = document.createElement("div");
+        year_title.className = "year-title";
         var year_header = document.createElement("h2");
         year_header.innerText = year;
-        year_node.appendChild(year_header);
         var year_expand = document.createElement("span");
         year_expand.className = "material-symbols-outlined";
         year_expand.innerText = "expand_more";
-        year_node.appendChild(year_expand);
+        year_title.appendChild(year_header);
+        year_title.appendChild(year_expand);
+        year_node.appendChild(year_title);
         years_nodes[year] = year_node;
         month_nodes[year] = {};
         document.getElementById("main-pictures").appendChild(year_node);
@@ -131,14 +140,20 @@ function get_month_node(timestamp) {
         // If not, create the node
         var month_node = document.createElement("div");
         month_node.className = "month";
+        var month_title = document.createElement("div");
+        month_title.className = "month-title";
         var month_header = document.createElement("h3");
         month_header.innerText = MONTHS_NAMES[month];
-        month_node.appendChild(month_header);
         var month_expand = document.createElement("span");
         month_expand.className = "material-symbols-outlined";
         month_expand.innerText = "expand_more";
-        month_node.appendChild(month_expand);
-        month_nodes[year][month] = month_node;
+        month_title.appendChild(month_header);
+        month_title.appendChild(month_expand);
+        month_node.appendChild(month_title);
+        var images_node = document.createElement("div");
+        images_node.className = "images";
+        month_node.appendChild(images_node);
+        month_nodes[year][month] = images_node;
         years_nodes[year].appendChild(month_node);
     }
     // Return the month node
