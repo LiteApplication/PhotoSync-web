@@ -9,13 +9,15 @@
 	<link rel="stylesheet" href="css/colors.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/viewer.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
 	<script src="js/api.js" defer></script>
+	<script src="js/viewer.js" defer></script>
 	<script src="js/index.js" defer></script>
 	<script src="js/jquery-3.4.1.min.js"></script>
 </head>
 
-<body>
+<body class="">
 	<!-- Create a header -->
 	<header>
 		<div class="title-group">
@@ -24,22 +26,42 @@
 		</div>
 		<nav>
 			<ul>
-				<li><span class="material-symbols-outlined">
-						home
-					</span></li>
-
-				<li><span class="material-symbols-outlined">
-						refresh
-					</span></li>
+				<li>
+					<span class="material-symbols-outlined">home </span>
+				</li>
+				<li>
+					<span class="material-symbols-outlined admin-button">dynamic_form</span>
+				</li>
+				<li>
+					<span class="material-symbols-outlined admin-button">refresh</span>
+				</li>
 			</ul>
 		</nav>
 	</header>
 
 	<div id="loading">Loading ...</div>
-	<main id="main-pictures">
+	<section class="viewer">
+		<div class="viewer-header">
+			<span class="material-symbols-outlined hover-bg-dark round-bg" id="close" onclick="close_viewer()">close</span>
+			<div id="image-actions">
+				<span class="material-symbols-outlined hover-bg-dark">share</span>
+				<span class="material-symbols-outlined hover-bg-dark">edit</span>
+				<span class="material-symbols-outlined hover-bg-dark" id="viewer-delete">delete</span>
+			</div>
+		</div>
+		<div class="navigate">
+
+			<span class="material-symbols-outlined">navigate_before</span>
+			<div class="viewer-container" id="vcontainer">
+				<!--Picture/video here-->
+			</div>
+			<span class="material-symbols-outlined">navigate_next</span>
+		</div>
+	</section>
+	<section id="main-pictures">
 		<!-- Pictures here -->
 
-	</main>
+	</section>
 
 </body>
 

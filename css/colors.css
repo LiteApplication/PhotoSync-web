@@ -6,4 +6,6 @@
     --primary-text: rgb(4, 114, 108);
     --inactive: rgb(128, 128, 128);
     --error: rgb(220, 110, 110);
+    --dark-background: rgb(0, 0, 0);
+    --dark-active-background: rgb(64, 64, 64);
 }

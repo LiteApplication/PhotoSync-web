@@ -1,3 +1,7 @@
+:root {
+    --transition-time: 0.5s;
+}
+
 body {
     background-color: var(--background);
     font-family: "Product Sans", sans-serif;
@@ -8,6 +12,7 @@ body {
 body *:hover {
     /* DEBUG: */
     /* border: 1px solid red; */
+
 }
 
 header {
@@ -39,4 +44,26 @@ header img {
     margin-right: 1rem;
     /* Add a shadow to the logo */
     filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5));
+}
+
+.hover-primary {
+    transition: color var(--transition-time) ease;
+}
+
+.hover-primary:hover {
+    color: var(--primary);
+}
+
+.hover-bg-dark {
+    transition: background-color var(--transition-time) ease;
+    background-color: var(--dark-background);
+    border-radius: 0.5rem;
+}
+
+.hover-bg-dark:hover {
+    background-color: var(--dark-active-background);
+}
+
+.round-bg {
+    border-radius: 100%;
 }

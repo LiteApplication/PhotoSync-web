@@ -25,6 +25,10 @@ header li {
     align-items: center;
 }
 
+body.viewing-image>section#main-pictures {
+    display: none;
+}
+
 #loading {
     display: flex;
     justify-content: center;
@@ -32,6 +36,7 @@ header li {
     height: 100vh;
     width: 100vw;
     background-color: var(--background);
+    overflow: hidden;
 }
 
 
@@ -49,13 +54,14 @@ header li {
     height: var(--thumbnail-size);
     width: var(--thumbnail-size);
     object-fit: cover;
-    transition: border-radius 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    transition: border-radius var(--transition-time) ease, transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
+    cursor: pointer;
 }
 
 
 .image:hover>img {
     transform: scale(1.1);
-    border-radius: calc(var(--thumbnail-size) / 10);
+    border-radius: calc(var(--thumbnail-size) / 15);
     /* Create a shadow around the image */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -72,13 +78,15 @@ header li {
     justify-content: space-between;
     /* Clickable area of the year title */
     cursor: pointer;
-    transition: box-shadow 0.5s ease, color 0.5s ease;
+    transition: box-shadow var(--transition-time) ease, color var(--transition-time) ease;
 }
 
 .year-title>h2 {
+    font-size: 2.25rem;
     margin: 0;
     padding: 0;
     margin-top: 1rem;
+    margin-left: 2rem;
 }
 
 .year-title>span {
@@ -102,13 +110,14 @@ header li {
     justify-content: space-between;
     /* Clickable area of the month title */
     cursor: pointer;
-    transition: box-shadow 0.5s ease, color 0.5s ease;
+    transition: box-shadow var(--transition-time) ease, color var(--transition-time) ease;
 }
 
-.month-title>h2 {
-    margin: 0;
+.month-title>h3 {
+    font-size: 1.75rem;
+    margin: 1rem;
     padding: 0;
-    margin-top: 1rem;
+    margin-left: 2.5rem;
 }
 
 .month-title>span {
@@ -121,4 +130,12 @@ header li {
     align-items: center;
     margin: 0;
     padding: 0;
+}
+
+div.year.year-collapsed>div.month {
+    display: none;
+}
+
+div.month.month-collapsed>div.images {
+    display: none;
 }
