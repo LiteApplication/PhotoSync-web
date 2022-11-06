@@ -43,3 +43,35 @@ function request(path, method, body, cache = false, priority = "low") {
 function saveToken(token) {
     localStorage.setItem("Token", token);
 }
+
+// Get a user list "/accounts/get-users"
+function getUsers() {
+    return new Promise((resolve, reject) => {
+        request("/accounts/get-users", "GET").then((response) => {
+            if (response.status == 200) {
+                response.json().then((data) => {
+                    resolve(data.users);
+                });
+            }
+            else {
+                reject(response.status);
+            }
+        });
+    });
+}
+
+// Get a user "/accounts/get-user"
+function getUser(username) {
+    return new Promise((resolve, reject) => {
+        request("/accounts/get-user/" + username, "GET").then((response) => {
+            if (response.status == 200) {
+                response.json().then((data) => {
+                    resolve(data.user);
+                });
+            }
+            else {
+                reject(response.status);
+            }
+        });
+    });
+}
