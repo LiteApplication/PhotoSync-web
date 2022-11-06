@@ -108,3 +108,126 @@ header {
     top: 0;
     z-index: 3;
 }
+
+.toast {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: toast 0.5s ease;
+    width: fit-content;
+    border-radius: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2rem;
+    opacity: 1;
+}
+
+.toast.error {
+    background-color: var(--error);
+    font-weight: bold;
+}
+
+.toast.hide {
+    animation: toast-hide 0.5s ease;
+    opacity: 0;
+}
+
+@keyframes toast {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(2rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes toast-hide {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(2rem);
+    }
+}
+
+.dialog {
+    position: fixed;
+    z-index: 9;
+    padding: 1.5rem;
+    padding-bottom: 3rem;
+    background-color: var(--background);
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: fit-content;
+    border-radius: 1rem;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 1;
+}
+
+
+.user-picker .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.user-picker .user-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    border: 1px solid var(--dark-background);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.user-picker .user {
+    /* Make a line break after every user */
+    border-bottom: 1px solid var(--dark-background);
+    width: 100%;
+    padding-left: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color var(--transition-time) ease,
+        color var(--transition-time) ease;
+}
+
+.user-picker .user:hover {
+    background-color: var(--active-background);
+    color: white;
+}
+
+.dialog .cancel {
+    margin-top: 2rem;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-weight: bold;
+    transition: background-color var(--transition-time) ease,
+        color var(--transition-time) ease;
+}
+
+.dialog .cancel:hover {
+    background-color: var(--error);
+    color: white;
+
+}

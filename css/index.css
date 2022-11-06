@@ -24,6 +24,10 @@ body.viewing-image>section#main-pictures {
     z-index: 1;
 }
 
+.image.selected {
+    outline: 0.2rem solid var(--primary);
+}
+
 .image:hover {
     z-index: 2;
 }

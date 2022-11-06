@@ -22,6 +22,30 @@ var month_nodes = {}
 
 const MONTHS_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+// Check if the user is pressing shift or ctrl
+var shift_pressed = false;
+var ctrl_pressed = false;
+window.addEventListener("keydown", (event) => {
+    if (event.key == "Shift") {
+        shift_pressed = true;
+    }
+    else if (event.key == "Control") {
+        ctrl_pressed = true;
+    }
+});
+window.addEventListener("keyup", (event) => {
+    if (event.key == "Shift") {
+        shift_pressed = false;
+    }
+    else if (event.key == "Control") {
+        ctrl_pressed = false;
+    }
+});
+
+
+
+
+
 function unix_timestamp_to_month_year(timestamp) {
     // Return the month and year of a unix timestamp
     // The timestamp is in seconds
@@ -226,6 +250,10 @@ function load_image(image) {
     });
 
     div.onclick = () => { open_viewer(image); }
+    div.onmouseover = () => {
+        if (shift_pressed) { div.classList.add("selected"); }
+        console.log("hover" + shift_pressed);
+    }
 
 }
 
@@ -266,6 +294,7 @@ function load_images(req = null) {
         }
         _is_loading_images = false;
     }).catch((error) => {
+        throw error;
         console.log("Error loading images", error);
     });
 
@@ -302,5 +331,8 @@ function load_images_time(force = false) {
     load_images(req);
     return true;
 }
+
+
+
 
 window.onload = main
