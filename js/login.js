@@ -116,3 +116,19 @@ $(document).ready(function () {
 
 });
 
+function main() {
+    request("/accounts/test", "GET").then((response) => {
+        // Check if the response is OK
+        if (response.status === 200) {
+            // If not, the token is invalid
+            console.log("User is already logged in");
+            // Redirect to the login page
+            window.location.href = "/index.html";
+            return;
+        }
+        load_images();
+    }).catch((error) => {
+        // Ignore errors
+    });
+
+}
