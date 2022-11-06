@@ -52,12 +52,6 @@ function main() {
             return;
         }
         load_images();
-    }).catch((error) => {
-        // If there was an error, the token is invalid
-        console.error("Token is invalid :" + error);
-        // Redirect to the login page
-        throw error;
-        window.location.href = "login.html";
     });
 
     // Check if the user is an admin
@@ -67,14 +61,14 @@ function main() {
             // If not, the user is not an admin
             console.log("User is not an admin");
             // Remove the admin button
-            while (document.getElementsByClassName("admin-button")) {
+            while (document.getElementsByClassName("admin-button").length !== 0) {
                 document.getElementsByClassName("admin-button")[0].remove();
             }
         }
         return;
     }).catch((error) => {
         // Remove the admin button
-        while (document.getElementsByClassName("admin-button")) {
+        while (document.getElementsByClassName("admin-button").length !== 0) {
             document.getElementsByClassName("admin-button")[0].remove();
         }
         console.error("Error while checking admin :" + error);
