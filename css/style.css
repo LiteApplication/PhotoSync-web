@@ -231,3 +231,7 @@ header {
     color: white;
 
 }
+
+#template * {
+    display: none !important;
+}

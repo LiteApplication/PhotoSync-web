@@ -1,5 +1,6 @@
 :root {
     --thumbnail-size: 128px;
+    --checkbox-size: 1.5rem;
 }
 
 
@@ -19,14 +20,37 @@ body.viewing-image>section#main-pictures {
 
 
 .image {
+    /* Let the checkbox go on top of the image */
+    position: relative;
+
     height: var(--thumbnail-size);
     width: var(--thumbnail-size);
     z-index: 1;
 }
 
 .image.selected {
-    outline: 0.2rem solid var(--primary);
+    outline: 0.3em solid var(--primary);
 }
+
+
+.image>input[type="checkbox"] {
+    /* Place the checkbox in the top left corner of the image */
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.image:hover>input[type="checkbox"] {
+    /* Show the checkbox when hovering over the image */
+    display: block;
+}
+
+.image>input[type="checkbox"]:checked {
+    /* Show the checkbox when it's checked */
+    display: block;
+}
+
 
 .image:hover {
     z-index: 2;

@@ -20,6 +20,15 @@
 </head>
 
 <body class="">
+
+	<!-- Hidden section that contains the template for the viewer -->
+	<div style="display: none;" aria-hidden="true" id="template">
+		<div class="image" id="__image_id" style="background-color: rgb(0, 0, 128);">
+			<img style="opacity: 0;" src="">
+			<input type="checkbox" onclick="image_checkbox(event.target.parentNode)">
+		</div>
+	</div>
+
 	<!-- Create a header -->
 	<header>
 		<div class="title-group">

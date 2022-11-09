@@ -18,7 +18,9 @@ var _is_loading_images = false;
 var _loaded_all_images = false;
 
 var years_nodes = {};
-var month_nodes = {}
+var month_nodes = {};
+
+var checked_images = [];
 
 const MONTHS_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -44,6 +46,26 @@ window.addEventListener("keyup", (event) => {
 
 
 
+function image_checkbox(image_node) {
+    // Get the checkbox
+    var checkbox = image_node.querySelector("input[type=checkbox]");
+    // Check if the checkbox is checked
+    if (!checkbox.checked) {
+        // If it is, uncheck it
+        //checkbox.checked = false;
+        // Remove the selected class
+        image_node.classList.remove("selected");
+        // Remove the image from the checked images
+        checked_images.splice(checked_images.indexOf(image_node.id), 1);
+    } else {
+        // If not, check it
+        //checkbox.checked = true;
+        // Add the selected class
+        image_node.classList.add("selected");
+        // Add the image to the checked images
+        checked_images.push(image_node.id);
+    }
+}
 
 
 function unix_timestamp_to_month_year(timestamp) {
@@ -108,7 +130,6 @@ window.onscroll = function () {
         if (_is_loading_images) {
             _should_load_images = true;
         } else {
-
             load_images();
         }
 
@@ -212,19 +233,16 @@ function get_month_node(timestamp) {
 
 function load_image(image) {
 
-    // Create the div
-    var div = document.createElement("div");
-    div.className = "image";
-    div.setAttribute("id", image.id);
-    div.style.backgroundColor = image.color;
-    // Create the image
-    var img = document.createElement("img");
-    img.style.opacity = 0;
+    // Get the template node
+    var template = document.querySelector("#template>.image")
 
-    // Add the image to the div
-    div.appendChild(img);
+    // Clone the template
+    var image_node_div = template.cloneNode(true);
+    image_node_div.id = image.id;
+    var image_node_img = image_node_div.querySelector("img");
+    image_node_div.style.backgroundColor = image.color;
     // Add the div to the page
-    get_month_node(image.date).appendChild(div);
+    get_month_node(image.date).appendChild(image_node_div);
     // Download the image
     request("/timg/get/" + image.id + "/" + thumbnail_size, "GET", undefined, cache = true).then((response) => {
         // Check if the response is OK
@@ -239,8 +257,8 @@ function load_image(image) {
             // Create a URL for the image
             var url = URL.createObjectURL(blob);
             // Set the image source
-            img.src = url;
-            img.style.opacity = 1;
+            image_node_img.src = url;
+            image_node_img.style.opacity = 1;
             end_loading();
         });
     }).catch((error) => {
@@ -249,25 +267,30 @@ function load_image(image) {
         debugger
     });
 
-    div.onclick = () => { open_viewer(image); }
-    div.onmouseover = () => {
-        if (shift_pressed) { div.classList.add("selected"); }
-        console.log("hover" + shift_pressed);
+    image_node_img.onclick = () => { open_viewer(image); }
+    image_node_div.onmouseover = () => {
+        if (ctrl_pressed) {
+            var checkbox = image_node_div.querySelector("input[type=checkbox]");
+            checkbox.checked = !checkbox.checked;
+            image_checkbox(image_node_div);
+        }
     }
 
 }
 
 
 function load_images(req = null) {
+    _is_loading_images = true;
+
     if (_loaded_all_images || _is_viewer_open) {
         return;
     }
 
     // Create a div for each image
     var images = [];
-    _is_loading_images = true;
 
     if (req === null) {
+        // Default request
         req = request("/files/file-list/id/" + last_image.id + "/" + thumbnails_to_load, "GET", undefined, cache = false, priority = "high")
     }
 
@@ -276,8 +299,8 @@ function load_images(req = null) {
 
         if (images.length == 0) {
             end_loading();
-            _is_loading_images = false;
             _loaded_all_images = true;
+            _is_loading_images = false;
             console.log("No more images to load");
             return;
         }
@@ -287,17 +310,17 @@ function load_images(req = null) {
             load_image(images[i]);
         }
         last_image = images[images.length - 1];
+        _is_loading_images = false;
+
         if (_should_load_images) {
             _should_load_images = false;
             load_images();
-
         }
-        _is_loading_images = false;
     }).catch((error) => {
+        _is_loading_images = false;
         throw error;
         console.log("Error loading images", error);
     });
-
 }
 
 function load_images_time(force = false) {
