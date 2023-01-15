@@ -235,3 +235,15 @@ header {
 #template * {
     display: none !important;
 }
+
+.fab {
+    position: sticky;
+    bottom: 3rem;
+    left: calc(100vw - 8rem);
+    padding: 1rem;
+    z-index: 4;
+    border-radius: 3rem;
+    background-color: var(--primary);
+    color: white;
+    width: fit-content;
+}

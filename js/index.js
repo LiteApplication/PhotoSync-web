@@ -283,6 +283,7 @@ function load_images(req = null) {
     _is_loading_images = true;
 
     if (_loaded_all_images || _is_viewer_open) {
+        _is_loading_images = false;
         return;
     }
 

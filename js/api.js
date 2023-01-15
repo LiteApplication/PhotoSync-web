@@ -1,4 +1,4 @@
-var host = "http://127.0.0.1:8080";
+var host = "https://127.0.0.1:8080";
 
 // Check if host and the page share the same origin
 {
