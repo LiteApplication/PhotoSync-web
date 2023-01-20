@@ -18,7 +18,7 @@ body.viewing-image section.viewer {
     position: absolute;
     z-index: 3;
     background-color: var(--dark-background);
-    color: white;
+    color: var(--controls-color);
     overflow: hidden;
 
 }
@@ -54,7 +54,7 @@ body.viewing-image .viewer-header {
     width: 100%;
     height: var(--viewer-header-height);
     background-color: black;
-    color: white;
+    color: var(--controls-color);
     z-index: 4;
 }
 

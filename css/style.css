@@ -8,6 +8,7 @@ body {
     font-family: "Product Sans", sans-serif;
     margin: 0;
     display: grid;
+    color: var(--text);
 }
 
 body *:hover {
@@ -41,7 +42,7 @@ header li {
 
 header {
     background-color: var(--primary);
-    color: white;
+    color: var(--text-on-primary);
     /* Add a box shadow to the header */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -64,10 +65,14 @@ header h1 {
 }
 
 header img {
-    height: 2rem;
+    height: 3rem;
     margin-right: 1rem;
     /* Add a shadow to the logo */
-    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.2));
+    /* Make the logo round */
+    border-radius: 100%;
+    /* Make the background of the logo a bit darker */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .hover-primary {
@@ -117,10 +122,10 @@ header {
     align-items: center;
     padding: 1rem;
     background-color: var(--primary);
-    color: white;
+    color: var(--text-on-primary);
     font-size: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    animation: toast 0.5s ease;
+    animation: toast var(--transition-time) ease;
     width: fit-content;
     border-radius: 0.5rem;
     left: 50%;
@@ -135,7 +140,7 @@ header {
 }
 
 .toast.hide {
-    animation: toast-hide 0.5s ease;
+    animation: toast-hide var(--transition-time) ease;
     opacity: 0;
 }
 
@@ -210,7 +215,7 @@ header {
 
 .user-picker .user:hover {
     background-color: var(--active-background);
-    color: white;
+    color: var(--text-on-primary);
 }
 
 .dialog .cancel {
@@ -228,7 +233,7 @@ header {
 
 .dialog .cancel:hover {
     background-color: var(--error);
-    color: white;
+    color: var(--text-on-primary);
 
 }
 
@@ -244,6 +249,6 @@ header {
     z-index: 4;
     border-radius: 3rem;
     background-color: var(--primary);
-    color: white;
+    color: var(--text-on-primary);
     width: fit-content;
 }
