@@ -1,12 +1,16 @@
 :root {
     /* Accent color */
-    --primary: rgb(18, 172, 164);
+    /*
+    Icon link :
+    https://icon.kitchen/i/H4sIAAAAAAAAA02QTU7EMAyF72K2XQDiR%2Bp2xBIJidkhVLmJk0bjJiU%2FHdBobsOBOBJxCohsYjvJe9%2FLCVbkQgn6E2iMh%2F1EM0FvkBN1MNrnCZfaQ3orLiom6MDYHbsFY5Y3ieoGMRSv65FTwdd2dXQcnB8wwrmDLJL6n%2BYucIj12sXlzf31nWqSD8aQyhUDiGnFvBk9odbOWzHKYYH%2B6raD6OxUPaUcQ85h3mom06bV0Nj9R4NWP5xtRO9C%2BvXZukdMhz8i45g8SuwaYGAsXk0Ut6S%2FqKYtiTMHXVg%2B7AXQ6xicBD%2FSCK%2Fnb8MOmMRNAQAA
+    */
+    --primary: #12aca4;
     --background: rgb(243, 243, 243);
     --text: rgb(0, 0, 0);
-    --primary-text: rgb(4, 114, 108);
+    --primary-text: #04726c;
     --inactive: rgb(128, 128, 128);
     --error: rgb(220, 110, 110);
     --dark-background: rgb(0, 0, 0);
     --dark-active-background: rgb(64, 64, 64);
-    --active-background: rgb(0, 90, 86);
+    --active-background: #005a56;
 }
