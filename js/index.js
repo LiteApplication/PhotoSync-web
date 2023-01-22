@@ -249,7 +249,7 @@ function load_image(image) {
         if (response.status !== 200) {
             // If not, the image failed to load
             console.error("Image failed to load");
-            document.getElementById("main-pictures").removeChild(div);
+            get_month_node(image.date).removeChild(image_node_div);
             return;
         }
         // Get the image data
@@ -296,7 +296,7 @@ function load_images(req = null) {
     }
 
     req.then((response) => { return response.json(); }).then((data) => {
-        images = data;
+        images = data.files;
 
         if (images.length == 0) {
             end_loading();

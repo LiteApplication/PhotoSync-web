@@ -1,4 +1,4 @@
-var host = "https://127.0.0.1:2701";
+var host = "${API_HOST}";
 
 // Check if host and the page share the same origin
 {

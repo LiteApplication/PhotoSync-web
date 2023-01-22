@@ -57,7 +57,7 @@ function do_register() {
 
         data.json().then((value) => {
             // Check if the response is OK
-            if (data.status !== 201) {
+            if (data.status !== 200) {
                 // If not, the registration failed
                 $("#error").text(value.message);
                 $("#error").show();
