@@ -27,7 +27,7 @@ function button_refresh(event) {
     var anim = setInterval(() => {
         rotation += 8;
         event.target.style.transform = "rotate(" + rotation + "deg)";
-    }, 1000 / 24);
+    }, 1000 / 25);
     request("/files/reload", "PATCH", undefined, false, "high").then(
         () => {
             clearInterval(anim);
